@@ -1,0 +1,48 @@
+{
+  "name": "musico",
+  "productName": "Musico",
+  "version": "1.0.0",
+  "description": "Now playing island, menu bar / taskbar song display and music player",
+  "main": "src/main.js",
+  "author": "Musico",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/unit.js",
+    "dist:win": "electron-builder --win nsis --x64",
+    "dist:mac": "electron-builder --mac dmg --universal"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.musico.app",
+    "productName": "Musico",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["src/**/*", "package.json"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.png",
+      "artifactName": "Musico-Setup.exe"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "runAfterFinish": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "mac": {
+      "category": "public.app-category.music",
+      "icon": "build/icon.png",
+      "target": [{ "target": "dmg", "arch": ["universal"] }],
+      "artifactName": "Musico-mac.dmg",
+      "extendInfo": {
+        "NSAppleEventsUsageDescription": "Musico reads what is playing in Spotify and Music and lets you control it.",
+        "LSUIElement": false
+      }
+    },
+    "dmg": { "title": "Install Musico" }
+  }
+}

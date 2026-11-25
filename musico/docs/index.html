@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download Musico</title>
+<style>
+:root{--bg:#0f0f12;--card:#1c1c20;--tx:#f5f5f7;--mu:#9a9aa4}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;display:grid;place-items:center;background:radial-gradient(900px 500px at 50% -10%,#3a1f4d,var(--bg) 70%);color:var(--tx);font-family:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;padding:20px}
+main{text-align:center;max-width:540px;width:100%}
+.logo{width:92px;height:92px;border-radius:22px;margin:0 auto 22px;background:linear-gradient(160deg,#ff375f,#7a4bff);display:grid;place-items:center;font-size:46px;box-shadow:0 18px 50px rgba(122,75,255,.4)}
+h1{font-size:40px;letter-spacing:-.03em}
+p{color:var(--mu);margin:10px 0 30px;font-size:17px}
+.btns{display:grid;gap:12px}
+a.b{display:flex;align-items:center;justify-content:center;gap:12px;padding:18px;border-radius:16px;background:var(--card);border:1px solid #2b2b31;color:var(--tx);text-decoration:none;font-size:18px;font-weight:600;transition:transform .15s,background .15s}
+a.b:hover{background:#26262c;transform:translateY(-2px)}
+a.b.rec{background:#fff;color:#111;border-color:#fff}
+small{display:block;color:var(--mu);margin-top:20px;font-size:13px;line-height:1.5}
+</style></head><body><main>
+<div class="logo">&#9835;</div>
+<h1>Musico</h1>
+<p>Your music, always one glance away.</p>
+<div class="btns">
+<a class="b" id="win" href="#">Windows Installer (.exe)</a>
+<a class="b" id="mac" href="#">Mac Installer (.dmg)</a>
+</div>
+<small>Not signed with a paid certificate, so the first launch shows a warning.<br>Windows: More info &rarr; Run anyway. Mac: right-click the app &rarr; Open.</small>
+</main>
+<script>
+const REPO = 'YOUR-GITHUB-USERNAME/musico'; // <- change this once
+const base = `https://github.com/${REPO}/releases/latest/download/`;
+const w = document.getElementById('win'), m = document.getElementById('mac');
+w.href = base + 'Musico-Setup.exe'; m.href = base + 'Musico-mac.dmg';
+const mac = /Mac/i.test(navigator.platform || navigator.userAgent);
+(mac ? m : w).classList.add('rec'); (mac ? m : w).parentNode.prepend(mac ? m : w);
+</script></body></html>

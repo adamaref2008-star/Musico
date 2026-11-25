@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body { background: transparent; overflow: hidden; height: 100%; }
+    #w { height: 40px; width: 300px; display: flex; align-items: center; gap: 10px; padding: 0 8px 0 6px; border-radius: 8px;
+      background: rgba(32,32,32,.78); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.08); color: #fff;
+      font-family: 'Segoe UI Variable Text','Segoe UI',system-ui,sans-serif; animation: pop .35s cubic-bezier(.2,.9,.3,1.1); }
+    @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(.96); } to { opacity: 1; transform: none; } }
+    #art { width: 28px; height: 28px; border-radius: 5px; flex: none; box-shadow: none; }
+    #art::after { font-size: 14px; }
+    #tx { flex: 1; min-width: 0; line-height: 1.15; }
+    #tx .t { font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #tx .a { font-size: 11px; color: #b5b5bb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .b { all: unset; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 5px; font-size: 14px; color: #fff; }
+    .b:hover { background: rgba(255,255,255,.12); } .b:active { background: rgba(255,255,255,.2); transform: scale(.94); }
+    #pr { position: absolute; left: 6px; right: 6px; bottom: 1px; height: 2px; border-radius: 2px; background: rgba(255,255,255,.12); overflow: hidden; }
+    #pr b { display: block; height: 100%; background: #60cdff; }
+    #w { position: relative; }
+  </style>
+</head>
+<body>
+  <div id="w">
+    <div class="art" id="art"></div>
+    <div id="tx"><div class="t" id="t"></div><div class="a" id="a"></div></div>
+    <button class="b" id="pv"></button><button class="b" id="pl"></button><button class="b" id="nx"></button>
+    <div id="pr"><b id="pb"></b></div>
+  </div>
+  <script src="icons.js"></script>
+  <script src="shared.js"></script>
+  <script src="taskbar.js"></script>
+</body>
+</html>
